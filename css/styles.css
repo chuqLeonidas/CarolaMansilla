@@ -84,6 +84,7 @@ body {
     transform: translateY(-2px);
 }
 
+
 /* ==========================================================================
    2. ESTILOS DE LA SECCIÓN HERO (Mobile First)
    ========================================================================== */
@@ -223,5 +224,206 @@ body {
 
     .hero-image-frame {
         max-width: 440px; /* Imagen más grande en monitores */
+    }
+}
+
+
+/* ==========================================================================
+   3. ESTILOS DE LA NAVBAR (Mobile First)
+   ========================================================================== */
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background-color: var(--primary-navy);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Asegura que quede por encima de todo el contenido */
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s var(--transition-smooth);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+/* Logo Personal Brand */
+.nav-logo {
+    font-family: var(--font-title);
+    color: var(--text-white);
+    font-size: 1.35rem;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+.nav-logo:hover {
+    color: var(--accent-gold);
+}
+
+/* Botón Menú Hamburguesa */
+.nav-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 26px;
+    height: 18px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1100; /* Por encima del menú desplegable móvil */
+}
+
+.hamburger-line {
+    width: 100%;
+    height: 2px;
+    background-color: var(--text-white);
+    transition: all 0.3s var(--transition-smooth);
+    transform-origin: left center;
+}
+
+/* Menú Desplegable en Móvil */
+.nav-menu {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Oculto por defecto a la derecha */
+    width: 80%;
+    max-width: 320px;
+    height: 100vh;
+    background-color: var(--primary-navy);
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
+    padding: 90px 2rem 2rem 2rem; /* Espacio superior para que no tape el logo */
+    transition: right 0.4s var(--transition-smooth);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estado Activo del Menú Móvil (Controlado por JS) */
+.nav-menu.is-active {
+    right: 0;
+}
+
+/* Animación del Botón Hamburguesa a "X" */
+.nav-toggle.is-active .hamburger-line:nth-child(1) {
+    transform: rotate(45deg);
+    background-color: var(--accent-gold);
+}
+
+.nav-toggle.is-active .hamburger-line:nth-child(2) {
+    width: 0%;
+    opacity: 0;
+}
+
+.nav-toggle.is-active .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg);
+    background-color: var(--accent-gold);
+}
+
+/* Lista de Navegación */
+.nav-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.nav-link {
+    font-family: var(--font-body);
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    display: inline-block;
+}
+
+.nav-link:hover {
+    color: var(--accent-gold);
+    padding-left: 5px; /* Sutil efecto de movimiento en móvil */
+}
+
+/* Botón CTA Destacado en Móvil */
+.btn-nav-cta {
+    display: block;
+    width: 100%;
+    padding: 0.75rem 1.5rem;
+    background-color: transparent;
+    color: var(--accent-gold);
+    border: 2px solid var(--accent-gold);
+    border-radius: 4px;
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s var(--transition-smooth);
+}
+
+.btn-nav-cta:hover {
+    background-color: var(--accent-gold);
+    color: var(--primary-navy);
+}
+
+/* ==========================================================================
+   4. RESPONSIVE DESIGN FOR NAVBAR (Media Queries)
+   ========================================================================== */
+
+@media (min-width: 992px) {
+    .main-header {
+        height: 80px; /* Un poco más alta en pantallas grandes */
+        background-color: rgba(11, 25, 44, 0.95); /* Sutil transparencia premium */
+        backdrop-filter: blur(10px); /* Efecto cristal esmerilado moderno */
+    }
+
+    .nav-toggle {
+        display: none; /* Ocultar hamburguesa en escritorio */
+    }
+
+    .nav-menu {
+        position: static; /* Volver al flujo normal de la página */
+        width: auto;
+        max-width: none;
+        height: auto;
+        background-color: transparent;
+        box-shadow: none;
+        padding: 0;
+        display: block;
+    }
+
+    .nav-list {
+        flex-direction: row; /* Menú horizontal */
+        align-items: center;
+        gap: 2.25rem;
+    }
+
+    .nav-link {
+        font-size: 0.95rem;
+        color: var(--text-white);
+    }
+
+    .nav-link:hover {
+        color: var(--accent-gold);
+        padding-left: 0; /* Desactivar movimiento horizontal de móvil */
+    }
+    
+    /* Ajuste de botón CTA para Escritorio */
+    .btn-nav-cta {
+        width: auto;
+        padding: 0.6rem 1.25rem;
+        font-size: 0.9rem;
+        background-color: var(--accent-gold);
+        color: var(--primary-navy);
+        border: none;
+    }
+
+    .btn-nav-cta:hover {
+        background-color: var(--accent-gold-hover);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2);
     }
 }
