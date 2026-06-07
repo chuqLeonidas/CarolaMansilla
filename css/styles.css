@@ -427,3 +427,165 @@ body {
         box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2);
     }
 }
+
+/* ==========================================================================
+   5. ESTILOS DE LA SECCIÓN SOBRE CAROLA (Mobile First)
+   ========================================================================== */
+.about {
+    padding: 5rem 0;
+    background-color: #FFFFFF; /* Fondo blanco para alternar ritmo visual con el Hero */
+    color: var(--primary-navy);
+}
+
+.about-container {
+    display: flex;
+    flex-direction: column; /* Columna única en móviles */
+    gap: 3.5rem;
+}
+
+/* Bloque de Texto */
+.about-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.about-subtitle {
+    font-family: var(--font-body);
+    color: var(--accent-gold);
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    margin-bottom: 0.75rem;
+}
+
+.about-title {
+    font-family: var(--font-title);
+    font-size: 2rem;
+    line-height: 1.3;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+}
+
+.about-text {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: #4A5568; /* Gris oscuro sofisticado para optimizar la lectura prolongada */
+    margin-bottom: 1.25rem;
+    font-weight: 400;
+}
+
+.about-text:last-child {
+    margin-bottom: 0;
+}
+
+/* Párrafo destacado (Estilo editorial/premium) */
+.about-text-highlight {
+    font-size: 1.1rem;
+    font-weight: 500;
+    line-height: 1.6;
+    color: var(--primary-navy);
+    border-left: 3px solid var(--accent-gold);
+    padding-left: 1.25rem;
+    margin-bottom: 1.75rem;
+}
+
+/* Bloque de Imagen */
+.about-media {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-image-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 380px; /* Consistencia de escala con la imagen de arriba */
+    aspect-ratio: 4 / 5;
+}
+
+.about-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 0 15px 35px rgba(11, 25, 44, 0.08); /* Sombra suave para fondos claros */
+}
+
+/* Insignia / Tarjeta flotante de certificación */
+.about-badge {
+    position: absolute;
+    bottom: -15px;
+    right: -10px;
+    background-color: var(--primary-navy);
+    color: var(--text-white);
+    padding: 1rem 1.5rem;
+    border-radius: 4px;
+    box-shadow: 0 10px 25px rgba(11, 25, 44, 0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    z-index: 10;
+}
+
+.badge-tag {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: var(--accent-gold);
+    font-weight: 600;
+    letter-spacing: 1.5px;
+}
+
+.badge-title {
+    font-family: var(--font-title);
+    font-size: 1.15rem;
+    font-weight: 400;
+    white-space: nowrap;
+}
+
+/* ==========================================================================
+   6. RESPONSIVE DESIGN FOR ABOUT (Media Queries)
+   ========================================================================== */
+
+@media (min-width: 992px) {
+    .about {
+        padding: 7.5rem 0; /* Mayor holgura en pantallas de escritorio */
+    }
+
+    .about-container {
+        flex-direction: row; /* Estructura horizontal de dos columnas */
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .about-content {
+        flex: 0 0 52%; /* Equilibrio de anchos */
+    }
+
+    .about-media {
+        flex: 0 0 40%;
+        justify-content: flex-start; /* Alineación limpia con la grilla general */
+    }
+
+    .about-title {
+        font-size: 2.75rem;
+        margin-bottom: 2rem;
+    }
+
+    .about-text {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .about-image-wrapper {
+        max-width: 420px; /* Escalado proporcional para monitores */
+    }
+    
+    .about-badge {
+        bottom: -20px;
+        right: -25px; /* Mayor desfase elegante en pantallas grandes */
+        padding: 1.25rem 2rem;
+    }
+}
