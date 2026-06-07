@@ -1,6 +1,9 @@
 /* ==========================================================================
-   1. VARIABLES GLOBALES Y CONFIGURACIÓN BASE (Solo se definen una vez)
+   HOJA DE ESTILOS GENERAL - CAROLA MANSILLA WEB
+   Diseño: Premium, Elegante, Minimalista y Mobile First
    ========================================================================== */
+
+/* IMPORTACIÓN DE FUENTES DESDE GOOGLE FONTS */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,400&display=swap');
 
 :root {
@@ -9,18 +12,20 @@
     --accent-gold: #D4AF37;        /* Dorado Elegante */
     --accent-gold-hover: #AA8B2C;  /* Dorado más oscuro para interacciones */
     --text-white: #FFFFFF;
-    --text-muted: #E2E8F0;         /* Gris Claro para legibilidad */
-    --bg-light: #F8FAFC;
+    --text-muted: #E2E8F0;         /* Gris Claro para textos sobre fondo oscuro */
+    --bg-light: #F8FAFC;           /* Fondo gris de cortesía para dar ritmo visual */
     
     /* Tipografías */
     --font-title: 'Playfair Display', serif;
     --font-body: 'Montserrat', sans-serif;
     
-    /* Transiciones */
+    /* Transiciones Globales */
     --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Reset Básico Receptivo */
+/* ==========================================================================
+   1. RESETEO BÁSICO Y RECEPTIVO
+   ========================================================================== */
 * {
     margin: 0;
     padding: 0;
@@ -39,7 +44,7 @@ body {
     line-height: 1.6;
 }
 
-/* Contenedor Global Adaptable */
+/* Contenedor Global Adaptable (Ancho máximo controlado) */
 .container {
     width: 100%;
     max-width: 1200px;
@@ -86,12 +91,205 @@ body {
 
 
 /* ==========================================================================
-   2. ESTILOS DE LA SECCIÓN HERO (Mobile First)
+   2. NAVBAR & HEADER (Navegación Fija)
+   ========================================================================== */
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background-color: var(--primary-navy);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s var(--transition-smooth);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.nav-logo {
+    font-family: var(--font-title);
+    color: var(--text-white);
+    font-size: 1.35rem;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+.nav-logo:hover {
+    color: var(--accent-gold);
+}
+
+/* Hamburguesa Móvil */
+.nav-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 26px;
+    height: 18px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1100;
+}
+
+.hamburger-line {
+    width: 100%;
+    height: 2px;
+    background-color: var(--text-white);
+    transition: all 0.3s var(--transition-smooth);
+    transform-origin: left center;
+}
+
+/* Menú Lateral Móvil */
+.nav-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 320px;
+    height: 100vh;
+    background-color: var(--primary-navy);
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
+    padding: 90px 2rem 2rem 2rem;
+    transition: right 0.4s var(--transition-smooth);
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-menu.is-active {
+    right: 0;
+}
+
+/* Transformación de Hamburguesa a X */
+.nav-toggle.is-active .hamburger-line:nth-child(1) {
+    transform: rotate(45deg);
+    background-color: var(--accent-gold);
+}
+
+.nav-toggle.is-active .hamburger-line:nth-child(2) {
+    width: 0%;
+    opacity: 0;
+}
+
+.nav-toggle.is-active .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg);
+    background-color: var(--accent-gold);
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.nav-link {
+    font-family: var(--font-body);
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    display: inline-block;
+}
+
+.nav-link:hover {
+    color: var(--accent-gold);
+    padding-left: 5px;
+}
+
+.btn-nav-cta {
+    display: block;
+    width: 100%;
+    padding: 0.75rem 1.5rem;
+    background-color: transparent;
+    color: var(--accent-gold);
+    border: 2px solid var(--accent-gold);
+    border-radius: 4px;
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s var(--transition-smooth);
+}
+
+.btn-nav-cta:hover {
+    background-color: var(--accent-gold);
+    color: var(--primary-navy);
+}
+
+/* Navbar para Escritorio */
+@media (min-width: 992px) {
+    .main-header {
+        height: 80px;
+        background-color: rgba(11, 25, 44, 0.95);
+        backdrop-filter: blur(10px);
+    }
+
+    .nav-toggle {
+        display: none;
+    }
+
+    .nav-menu {
+        position: static;
+        width: auto;
+        max-width: none;
+        height: auto;
+        background-color: transparent;
+        box-shadow: none;
+        padding: 0;
+        display: block;
+    }
+
+    .nav-list {
+        flex-direction: row;
+        align-items: center;
+        gap: 2.25rem;
+    }
+
+    .nav-link {
+        font-size: 0.95rem;
+        color: var(--text-white);
+    }
+
+    .nav-link:hover {
+        color: var(--accent-gold);
+        padding-left: 0;
+    }
+    
+    .btn-nav-cta {
+        width: auto;
+        padding: 0.6rem 1.25rem;
+        font-size: 0.9rem;
+        background-color: var(--accent-gold);
+        color: var(--primary-navy);
+        border: none;
+    }
+
+    .btn-nav-cta:hover {
+        background-color: var(--accent-gold-hover);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2);
+    }
+}
+
+
+/* ==========================================================================
+   3. SECCIÓN HERO
    ========================================================================== */
 .hero {
     background-color: var(--primary-navy);
     color: var(--text-white);
-    padding: 6rem 0 4rem 0; /* Espacio superior para prever la Navbar fija */
+    padding: 6rem 0 4rem 0;
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -101,11 +299,10 @@ body {
 
 .hero-container {
     display: flex;
-    flex-direction: column; /* Columna única para móviles */
+    flex-direction: column;
     gap: 3rem;
 }
 
-/* Contenido de Texto */
 .hero-content {
     display: flex;
     flex-direction: column;
@@ -139,11 +336,10 @@ body {
 
 .hero-actions {
     display: flex;
-    flex-direction: column; /* Botones apilados en pantallas muy pequeñas */
+    flex-direction: column;
     gap: 1rem;
 }
 
-/* Contenedor de Imagen */
 .hero-media {
     display: flex;
     justify-content: center;
@@ -153,7 +349,7 @@ body {
 .hero-image-frame {
     position: relative;
     width: 100%;
-    max-width: 380px; /* Tamaño controlado para móviles */
+    max-width: 380px;
     aspect-ratio: 4 / 5;
 }
 
@@ -167,7 +363,6 @@ body {
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
 }
 
-/* Marco decorativo elegante detras de la imagen */
 .hero-decorator {
     position: absolute;
     top: 15px;
@@ -180,270 +375,63 @@ body {
     pointer-events: none;
 }
 
-/* ==========================================================================
-   3. RESPONSIVE DESIGN (Media Queries)
-   ========================================================================== */
-
-/* Ajustes para Smartphones medianos/grandes */
 @media (min-width: 480px) {
     .hero-actions {
-        flex-direction: row; /* Botones uno al lado del otro */
+        flex-direction: row;
     }
 }
 
-/* Ajustes para Tablets y Escritorio (Pantallas Medianas y Grandes) */
 @media (min-width: 992px) {
     .hero {
-        padding: 0; /* Se apoya en el min-height para centrar verticalmente */
+        padding: 0;
     }
 
     .hero-container {
-        flex-direction: row; /* Diseño de dos columnas en escritorio */
+        flex-direction: row;
         align-items: center;
         justify-content: space-between;
     }
 
     .hero-content {
-        flex: 0 0 55%; /* Ocupa el 55% del ancho */
+        flex: 0 0 55%;
     }
 
     .hero-media {
-        flex: 0 0 40%; /* Ocupa el 40% del ancho */
+        flex: 0 0 40%;
         justify-content: flex-end;
     }
 
     .hero-title {
-        font-size: 3.5rem; /* Título más imponente en pantallas grandes */
+        font-size: 3.5rem;
         margin-bottom: 2rem;
     }
 
     .hero-description {
         font-size: 1.125rem;
-        padding-right: 2rem; /* Aire al texto antes de colisionar con la imagen */
+        padding-right: 2rem;
     }
 
     .hero-image-frame {
-        max-width: 440px; /* Imagen más grande en monitores */
+        max-width: 440px;
     }
 }
 
 
 /* ==========================================================================
-   3. ESTILOS DE LA NAVBAR (Mobile First)
-   ========================================================================== */
-.main-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 70px;
-    background-color: var(--primary-navy);
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
-    z-index: 1000; /* Asegura que quede por encima de todo el contenido */
-    display: flex;
-    align-items: center;
-    transition: background-color 0.3s var(--transition-smooth);
-}
-
-.nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 100%;
-}
-
-/* Logo Personal Brand */
-.nav-logo {
-    font-family: var(--font-title);
-    color: var(--text-white);
-    font-size: 1.35rem;
-    font-weight: 500;
-    text-decoration: none;
-    letter-spacing: 1px;
-    transition: color 0.3s ease;
-}
-
-.nav-logo:hover {
-    color: var(--accent-gold);
-}
-
-/* Botón Menú Hamburguesa */
-.nav-toggle {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 26px;
-    height: 18px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    z-index: 1100; /* Por encima del menú desplegable móvil */
-}
-
-.hamburger-line {
-    width: 100%;
-    height: 2px;
-    background-color: var(--text-white);
-    transition: all 0.3s var(--transition-smooth);
-    transform-origin: left center;
-}
-
-/* Menú Desplegable en Móvil */
-.nav-menu {
-    position: fixed;
-    top: 0;
-    right: -100%; /* Oculto por defecto a la derecha */
-    width: 80%;
-    max-width: 320px;
-    height: 100vh;
-    background-color: var(--primary-navy);
-    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
-    padding: 90px 2rem 2rem 2rem; /* Espacio superior para que no tape el logo */
-    transition: right 0.4s var(--transition-smooth);
-    display: flex;
-    flex-direction: column;
-}
-
-/* Estado Activo del Menú Móvil (Controlado por JS) */
-.nav-menu.is-active {
-    right: 0;
-}
-
-/* Animación del Botón Hamburguesa a "X" */
-.nav-toggle.is-active .hamburger-line:nth-child(1) {
-    transform: rotate(45deg);
-    background-color: var(--accent-gold);
-}
-
-.nav-toggle.is-active .hamburger-line:nth-child(2) {
-    width: 0%;
-    opacity: 0;
-}
-
-.nav-toggle.is-active .hamburger-line:nth-child(3) {
-    transform: rotate(-45deg);
-    background-color: var(--accent-gold);
-}
-
-/* Lista de Navegación */
-.nav-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
-.nav-link {
-    font-family: var(--font-body);
-    color: var(--text-muted);
-    text-decoration: none;
-    font-size: 1.1rem;
-    font-weight: 500;
-    transition: color 0.3s ease;
-    display: inline-block;
-}
-
-.nav-link:hover {
-    color: var(--accent-gold);
-    padding-left: 5px; /* Sutil efecto de movimiento en móvil */
-}
-
-/* Botón CTA Destacado en Móvil */
-.btn-nav-cta {
-    display: block;
-    width: 100%;
-    padding: 0.75rem 1.5rem;
-    background-color: transparent;
-    color: var(--accent-gold);
-    border: 2px solid var(--accent-gold);
-    border-radius: 4px;
-    font-family: var(--font-body);
-    font-weight: 600;
-    text-align: center;
-    text-decoration: none;
-    transition: all 0.3s var(--transition-smooth);
-}
-
-.btn-nav-cta:hover {
-    background-color: var(--accent-gold);
-    color: var(--primary-navy);
-}
-
-/* ==========================================================================
-   4. RESPONSIVE DESIGN FOR NAVBAR (Media Queries)
-   ========================================================================== */
-
-@media (min-width: 992px) {
-    .main-header {
-        height: 80px; /* Un poco más alta en pantallas grandes */
-        background-color: rgba(11, 25, 44, 0.95); /* Sutil transparencia premium */
-        backdrop-filter: blur(10px); /* Efecto cristal esmerilado moderno */
-    }
-
-    .nav-toggle {
-        display: none; /* Ocultar hamburguesa en escritorio */
-    }
-
-    .nav-menu {
-        position: static; /* Volver al flujo normal de la página */
-        width: auto;
-        max-width: none;
-        height: auto;
-        background-color: transparent;
-        box-shadow: none;
-        padding: 0;
-        display: block;
-    }
-
-    .nav-list {
-        flex-direction: row; /* Menú horizontal */
-        align-items: center;
-        gap: 2.25rem;
-    }
-
-    .nav-link {
-        font-size: 0.95rem;
-        color: var(--text-white);
-    }
-
-    .nav-link:hover {
-        color: var(--accent-gold);
-        padding-left: 0; /* Desactivar movimiento horizontal de móvil */
-    }
-    
-    /* Ajuste de botón CTA para Escritorio */
-    .btn-nav-cta {
-        width: auto;
-        padding: 0.6rem 1.25rem;
-        font-size: 0.9rem;
-        background-color: var(--accent-gold);
-        color: var(--primary-navy);
-        border: none;
-    }
-
-    .btn-nav-cta:hover {
-        background-color: var(--accent-gold-hover);
-        transform: translateY(-1px);
-        box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2);
-    }
-}
-
-/* ==========================================================================
-   5. ESTILOS DE LA SECCIÓN SOBRE CAROLA (Mobile First)
+   4. SECCIÓN SOBRE CAROLA
    ========================================================================== */
 .about {
     padding: 5rem 0;
-    background-color: #FFFFFF; /* Fondo blanco para alternar ritmo visual con el Hero */
+    background-color: #FFFFFF; /* Alternancia rítmica */
     color: var(--primary-navy);
 }
 
 .about-container {
     display: flex;
-    flex-direction: column; /* Columna única en móviles */
+    flex-direction: column;
     gap: 3.5rem;
 }
 
-/* Bloque de Texto */
 .about-content {
     display: flex;
     flex-direction: column;
@@ -471,16 +459,10 @@ body {
 .about-text {
     font-family: var(--font-body);
     font-size: 0.95rem;
-    color: #4A5568; /* Gris oscuro sofisticado para optimizar la lectura prolongada */
+    color: #4A5568;
     margin-bottom: 1.25rem;
-    font-weight: 400;
 }
 
-.about-text:last-child {
-    margin-bottom: 0;
-}
-
-/* Párrafo destacado (Estilo editorial/premium) */
 .about-text-highlight {
     font-size: 1.1rem;
     font-weight: 500;
@@ -491,7 +473,6 @@ body {
     margin-bottom: 1.75rem;
 }
 
-/* Bloque de Imagen */
 .about-media {
     display: flex;
     justify-content: center;
@@ -501,7 +482,7 @@ body {
 .about-image-wrapper {
     position: relative;
     width: 100%;
-    max-width: 380px; /* Consistencia de escala con la imagen de arriba */
+    max-width: 380px;
     aspect-ratio: 4 / 5;
 }
 
@@ -510,10 +491,9 @@ body {
     height: 100%;
     object-fit: cover;
     border-radius: 4px;
-    box-shadow: 0 15px 35px rgba(11, 25, 44, 0.08); /* Sombra suave para fondos claros */
+    box-shadow: 0 15px 35px rgba(11, 25, 44, 0.08);
 }
 
-/* Insignia / Tarjeta flotante de certificación */
 .about-badge {
     position: absolute;
     bottom: -15px;
@@ -545,28 +525,24 @@ body {
     white-space: nowrap;
 }
 
-/* ==========================================================================
-   6. RESPONSIVE DESIGN FOR ABOUT (Media Queries)
-   ========================================================================== */
-
 @media (min-width: 992px) {
     .about {
-        padding: 7.5rem 0; /* Mayor holgura en pantallas de escritorio */
+        padding: 7.5rem 0;
     }
 
     .about-container {
-        flex-direction: row; /* Estructura horizontal de dos columnas */
+        flex-direction: row; /* Imagen a un lado y texto al otro */
         align-items: center;
         justify-content: space-between;
     }
 
     .about-content {
-        flex: 0 0 52%; /* Equilibrio de anchos */
+        flex: 0 0 52%;
     }
 
     .about-media {
         flex: 0 0 40%;
-        justify-content: flex-start; /* Alineación limpia con la grilla general */
+        justify-content: flex-start;
     }
 
     .about-title {
@@ -580,30 +556,30 @@ body {
     }
 
     .about-image-wrapper {
-        max-width: 420px; /* Escalado proporcional para monitores */
+        max-width: 420px;
     }
     
     .about-badge {
         bottom: -20px;
-        right: -25px; /* Mayor desfase elegante en pantallas grandes */
+        right: -25px;
         padding: 1.25rem 2rem;
     }
 }
 
+
 /* ==========================================================================
-   7. ESTILOS DE LA SECCIÓN METODOLOGÍA (Mobile First)
+   5. SECCIÓN METODOLOGÍA
    ========================================================================== */
 .methodology {
     padding: 5rem 0;
-    background-color: var(--bg-light); /* Fondo gris claro de cortesía */
+    background-color: var(--bg-light);
     color: var(--primary-navy);
 }
 
-/* Cabecera de la sección */
 .methodology-header {
     text-align: center;
     max-width: 700px;
-    margin: 0 auto 3.5rem auto; /* Centrado horizontal y margen inferior amplio */
+    margin: 0 auto 3.5rem auto;
 }
 
 .methodology-tagline {
@@ -629,29 +605,25 @@ body {
     font-family: var(--font-body);
     font-size: 0.95rem;
     color: #4A5568;
-    line-height: 1.6;
 }
 
-/* Grilla de Tarjetas (Por defecto en móvil: una sola columna) */
 .methodology-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 2rem;
 }
 
-/* Diseño de Tarjeta Individual Premium */
 .methodology-card {
     background-color: #FFFFFF;
     padding: 2.25rem 2rem;
     border-radius: 6px;
-    box-shadow: 0 10px 30px rgba(11, 25, 44, 0.04); /* Sombra ultra suave */
-    border-top: 3px solid transparent; /* Reservado para el efecto Hover */
+    box-shadow: 0 10px 30px rgba(11, 25, 44, 0.04);
+    border-top: 3px solid transparent;
     transition: all 0.4s var(--transition-smooth);
     display: flex;
     flex-direction: column;
 }
 
-/* Encabezado interno de la tarjeta */
 .card-header {
     display: flex;
     justify-content: space-between;
@@ -659,12 +631,11 @@ body {
     margin-bottom: 1.5rem;
 }
 
-/* Contenedor del Icono SVG */
 .card-icon {
     width: 46px;
     height: 46px;
     color: var(--accent-gold);
-    background-color: rgba(212, 175, 55, 0.08); /* Sutil fondo áureo */
+    background-color: rgba(212, 175, 55, 0.08);
     padding: 0.65rem;
     border-radius: 4px;
     display: flex;
@@ -673,17 +644,15 @@ body {
     transition: all 0.3s ease;
 }
 
-/* Control estricto de dimensiones del SVG */
 .card-icon svg {
     width: 100%;
     height: 100%;
 }
 
-/* Número de la etapa de fondo refinado */
 .card-number {
     font-family: var(--font-title);
     font-size: 1.25rem;
-    color: rgba(11, 25, 44, 0.15); /* Transparente y elegante */
+    color: rgba(11, 25, 44, 0.15);
     font-weight: 700;
 }
 
@@ -700,37 +669,30 @@ body {
     font-size: 0.9rem;
     color: #5A6A80;
     line-height: 1.6;
-    font-weight: 400;
 }
 
-/* Efectos Interactivos Hover (Para ratón o pulsación prolongada) */
+/* Efectos Hover de las Tarjetas */
 .methodology-card:hover {
     transform: translateY(-6px);
     box-shadow: 0 15px 35px rgba(11, 25, 44, 0.08);
-    border-top-color: var(--accent-gold); /* Revela una fina línea dorada premium */
+    border-top-color: var(--accent-gold);
 }
 
 .methodology-card:hover .card-icon {
     background-color: var(--accent-gold);
-    color: var(--primary-navy); /* Invierte los colores del icono */
+    color: var(--primary-navy);
 }
 
 .methodology-card:hover .card-title {
     color: var(--accent-gold-hover);
 }
 
-/* ==========================================================================
-   8. RESPONSIVE DESIGN FOR METHODOLOGY (Media Queries)
-   ========================================================================== */
-
-/* Ajuste para Tablets (2 columnas) */
 @media (min-width: 640px) {
     .methodology-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-/* Ajuste para Escritorio (4 columnas perfectas horizontales) */
 @media (min-width: 1024px) {
     .methodology {
         padding: 7.5rem 0;
@@ -738,16 +700,11 @@ body {
 
     .methodology-title {
         font-size: 2.75rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .methodology-subtitle {
-        font-size: 1.05rem;
     }
 
     .methodology-grid {
-        grid-template-columns: repeat(4, 1fr); /* Divide la fila equitativamente */
-        gap: 1.5rem; /* Ajuste estrecho para encajar armónicamente en los 1200px */
+        grid-template-columns: repeat(4, 1fr); /* Fila perfecta de 4 columnas */
+        gap: 1.5rem;
     }
     
     .methodology-card {
@@ -755,16 +712,16 @@ body {
     }
 }
 
+
 /* ==========================================================================
-   9. ESTILOS DE LA SECCIÓN SESIONES (Mobile First)
+   6. SECCIÓN SESIONES
    ========================================================================== */
 .sessions {
     padding: 5rem 0;
-    background-color: #FFFFFF; /* Fondo blanco para generar limpieza y contraste */
+    background-color: #FFFFFF;
     color: var(--primary-navy);
 }
 
-/* Cabecera de la sección */
 .sessions-header {
     text-align: center;
     max-width: 700px;
@@ -794,10 +751,8 @@ body {
     font-family: var(--font-body);
     font-size: 0.95rem;
     color: #4A5568;
-    line-height: 1.6;
 }
 
-/* Grilla (Móvil: vertical) */
 .sessions-grid {
     display: flex;
     flex-direction: column;
@@ -805,7 +760,6 @@ body {
     margin-bottom: 4rem;
 }
 
-/* Estilo Base de las Tarjetas */
 .session-card {
     background-color: var(--bg-light);
     padding: 2.5rem 2rem;
@@ -817,7 +771,6 @@ body {
     flex-direction: column;
 }
 
-/* Detalle sutil extra para diferenciar la tarjeta presencial */
 .session-card.highlight-border {
     border-left: 4px solid var(--accent-gold);
 }
@@ -839,7 +792,6 @@ body {
     font-family: var(--font-title);
     font-size: 1.5rem;
     font-weight: 500;
-    color: var(--primary-navy);
     margin-top: 0.25rem;
 }
 
@@ -847,11 +799,10 @@ body {
     font-family: var(--font-body);
     font-size: 0.95rem;
     color: #5A6A80;
-    line-height: 1.6;
     margin-bottom: 1.75rem;
 }
 
-/* Bloque informativo de Dirección Física */
+/* Caja de dirección física sutil */
 .session-location {
     display: flex;
     gap: 0.875rem;
@@ -874,17 +825,15 @@ body {
     font-family: var(--font-body);
     font-style: normal;
     font-size: 0.875rem;
-    line-height: 1.5;
     color: #4A5568;
 }
 
-/* Listado de Características con Checkmarks */
 .session-features {
     list-style: none;
     display: flex;
     flex-direction: column;
     gap: 0.875rem;
-    margin-top: auto; /* Empuja la lista al fondo si hay desniveles */
+    margin-top: auto;
 }
 
 .session-features li {
@@ -893,7 +842,6 @@ body {
     gap: 0.75rem;
     font-family: var(--font-body);
     font-size: 0.9rem;
-    color: var(--primary-navy);
 }
 
 .icon-check {
@@ -903,16 +851,13 @@ body {
     flex-shrink: 0;
 }
 
-/* Efectos Hover Elegantes */
 .session-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 15px 40px rgba(11, 25, 44, 0.07);
-    background-color: #FFFFFF; /* Se aclara sutilmente si estaba en gris */
+    background-color: #FFFFFF;
 }
 
-/* ==========================================================================
-   10. BLOQUE DESTACADO INFERIOR (Caja de Conversión Premium)
-   ========================================================================== */
+/* Bloque Inferior Llamado a la Acción (CTA) */
 .sessions-footer-block {
     background-color: var(--primary-navy);
     color: var(--text-white);
@@ -937,7 +882,6 @@ body {
     font-family: var(--font-body);
     font-size: 0.95rem;
     color: var(--text-muted);
-    line-height: 1.6;
     max-width: 650px;
 }
 
@@ -946,17 +890,13 @@ body {
 }
 
 .footer-block-action .btn {
-    width: 100%; /* Botón completo en pantallas móviles */
+    width: 100%;
 }
-
-/* ==========================================================================
-   11. RESPONSIVE DESIGN FOR SESSIONS (Media Queries)
-   ========================================================================== */
 
 @media (min-width: 768px) {
     .sessions-footer-block {
         padding: 3.5rem;
-        flex-direction: row; /* Alineación horizontal en tabletas/PC */
+        flex-direction: row;
         align-items: center;
         justify-content: space-between;
     }
@@ -981,30 +921,26 @@ body {
 
     .sessions-title {
         font-size: 2.75rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .sessions-subtitle {
-        font-size: 1.05rem;
     }
 
     .sessions-grid {
-        flex-direction: row; /* Dos columnas paralelas en escritorio */
+        flex-direction: row; /* Dos columnas paralelas perfectas */
         gap: 2rem;
     }
 
     .session-card {
-        flex: 1; /* Distribución perfectamente equitativa */
+        flex: 1;
         padding: 3.5rem 2.5rem;
     }
 }
 
+
 /* ==========================================================================
-   12. ESTILOS DE LA SECCIÓN FAQ (Mobile First)
+   7. SECCIÓN PREGUNTAS FRECUENTES (FAQ)
    ========================================================================== */
 .faq {
     padding: 5rem 0;
-    background-color: var(--bg-light); /* Fondo gris claro */
+    background-color: var(--bg-light);
     color: var(--primary-navy);
 }
 
@@ -1037,19 +973,16 @@ body {
     font-family: var(--font-body);
     font-size: 0.95rem;
     color: #4A5568;
-    line-height: 1.6;
 }
 
-/* Contenedor del Acordeón */
 .faq-accordion {
-    max-width: 820px; /* Ancho óptimo de lectura para acordeones */
+    max-width: 820px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 1rem; /* Separación limpia entre filas */
+    gap: 1rem;
 }
 
-/* Estructura de Fila Individual */
 .faq-item {
     background-color: #FFFFFF;
     border-radius: 6px;
@@ -1059,7 +992,6 @@ body {
     transition: all 0.3s var(--transition-smooth);
 }
 
-/* Botón Disparador (Trigger) */
 .faq-trigger {
     width: 100%;
     display: flex;
@@ -1079,11 +1011,10 @@ body {
     font-weight: 600;
     color: var(--primary-navy);
     line-height: 1.4;
-    padding-right: 1.5rem; /* Evita que el texto colisione con el icono */
+    padding-right: 1.5rem;
     transition: color 0.3s ease;
 }
 
-/* Contenedor Circular del Icono SVG */
 .faq-icon-wrapper {
     width: 32px;
     height: 32px;
@@ -1103,14 +1034,13 @@ body {
     transition: transform 0.3s var(--transition-smooth);
 }
 
-/* Contenedor Oculto del Contenido (Controlado dinámicamente por JS) */
+/* Colapso Dinámico JS */
 .faq-content {
-    max-height: 0; /* Colapsado por defecto */
+    max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s cubic-bezier(0, 1, 0, 1); /* Truco de aceleración elegante */
+    transition: max-height 0.3s cubic-bezier(0, 1, 0, 1);
 }
 
-/* Padding interno para el texto de la respuesta */
 .faq-answer-inner {
     padding: 0 1.5rem 1.5rem 1.5rem;
 }
@@ -1122,14 +1052,11 @@ body {
     line-height: 1.6;
 }
 
-/* ==========================================================================
-   ESTADOS ACTIVOS Y INTERACCIONES (Hover y Menú Abierto)
-   ========================================================================== */
 .faq-trigger:hover .faq-question {
     color: var(--accent-gold-hover);
 }
 
-/* Clases inyectadas por JavaScript */
+/* Estados de Apertura Interactiva */
 .faq-item.is-open {
     box-shadow: 0 10px 25px rgba(11, 25, 44, 0.05);
     border-color: rgba(212, 175, 55, 0.3);
@@ -1145,12 +1072,9 @@ body {
 }
 
 .faq-item.is-open .faq-icon {
-    transform: rotate(180deg); /* El chevron apunta hacia arriba al abrir */
+    transform: rotate(180deg);
 }
 
-/* ==========================================================================
-   13. RESPONSIVE DESIGN FOR FAQ (Media Queries)
-   ========================================================================== */
 @media (min-width: 992px) {
     .faq {
         padding: 7.5rem 0;
@@ -1158,7 +1082,6 @@ body {
 
     .faq-title {
         font-size: 2.75rem;
-        margin-bottom: 1.5rem;
     }
 
     .faq-subtitle {
@@ -1166,7 +1089,7 @@ body {
     }
 
     .faq-trigger {
-        padding: 1.75rem 2rem; /* Más espaciado editorial en pantallas grandes */
+        padding: 1.75rem 2rem;
     }
 
     .faq-question {
@@ -1177,22 +1100,23 @@ body {
         padding: 0 2rem 1.75rem 2rem;
     }
 }
+
+
 /* ==========================================================================
-   14. ESTILOS REVISADOS DE LA SECCIÓN CONTACTO (Mobile First)
+   8. SECCIÓN CONTACTO Y MAPA BLANCO PREMIUM (Corregido)
    ========================================================================== */
 .contact {
     padding: 5rem 0;
-    background-color: #FFFFFF; /* Fondo limpio para contrastar con el gris de las FAQ */
+    background-color: #FFFFFF;
     color: var(--primary-navy);
 }
 
 .contact-container {
     display: flex;
-    flex-direction: column; /* Apilado en una columna por defecto para móviles */
+    flex-direction: column;
     gap: 3rem;
 }
 
-/* --- Estilos de la Columna de Contenido (Izquierda) --- */
 .contact-content-side {
     display: flex;
     flex-direction: column;
@@ -1205,7 +1129,6 @@ body {
     font-weight: 600;
     font-size: 0.85rem;
     letter-spacing: 2px;
-    display: inline-block;
     margin-bottom: 0.75rem;
 }
 
@@ -1225,13 +1148,13 @@ body {
     margin-bottom: 2rem;
 }
 
-/* Nueva Tarjeta de WhatsApp Compacta e Integrada */
+/* Tarjeta Compacta WhatsApp */
 .contact-premium-card {
     background-color: var(--primary-navy);
     color: var(--text-white);
-    padding: 2.25rem 1.75rem;
+    padding: 2rem 1.5rem;
     border-radius: 6px;
-    box-shadow: 0 12px 30px rgba(11, 25, 44, 0.1);
+    box-shadow: 0 12px 30px rgba(11, 25, 44, 0.08);
     position: relative;
     margin-bottom: 2.5rem;
     display: flex;
@@ -1241,7 +1164,7 @@ body {
 .card-badge-gold {
     position: absolute;
     top: -12px;
-    left: 1.75rem;
+    left: 1.5rem;
     background-color: var(--accent-gold);
     color: var(--primary-navy);
     font-family: var(--font-body);
@@ -1256,18 +1179,18 @@ body {
 .card-card-flex {
     display: flex;
     align-items: center;
-    gap: 1.25rem;
-    margin-bottom: 1.5rem;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
     margin-top: 0.5rem;
 }
 
 .whatsapp-icon-wrapper {
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
     color: var(--accent-gold);
     background-color: rgba(212, 175, 55, 0.12);
     border-radius: 50%;
-    padding: 0.85rem;
+    padding: 0.8rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1281,24 +1204,21 @@ body {
 
 .card-action-title {
     font-family: var(--font-title);
-    font-size: 1.35rem;
+    font-size: 1.25rem;
     font-weight: 400;
-    color: var(--text-white);
 }
 
 .contact-phone-display {
     font-family: var(--font-body);
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     font-weight: 500;
     color: var(--accent-gold);
     text-decoration: none;
-    display: inline-block;
-    margin-top: 0.15rem;
 }
 
 .btn-contact-cta {
     width: 100%;
-    margin-bottom: 0.875rem;
+    margin-bottom: 0.75rem;
 }
 
 .card-action-note {
@@ -1308,25 +1228,24 @@ body {
     text-align: center;
 }
 
-/* Lista de ítems inferiores (Modalidad y Dirección) */
 .contact-details-list {
     display: flex;
     flex-direction: column;
-    gap: 1.75rem;
+    gap: 1.5rem;
 }
 
 .contact-detail-item {
     display: flex;
-    gap: 1.25rem;
+    gap: 1rem;
     align-items: flex-start;
 }
 
 .detail-icon-box {
-    width: 42px;
-    height: 42px;
+    width: 40px;
+    height: 40px;
     background-color: var(--bg-light);
     color: var(--primary-navy);
-    padding: 0.75rem;
+    padding: 0.7rem;
     border-radius: 6px;
     display: flex;
     align-items: center;
@@ -1345,32 +1264,74 @@ body {
     font-size: 0.95rem;
     font-weight: 600;
     margin-bottom: 0.25rem;
-    color: var(--primary-navy);
 }
 
-.detail-text-box p,
-.detail-text-box address {
+.detail-text-box p {
     font-family: var(--font-body);
     font-size: 0.875rem;
     color: #5A6A80;
     line-height: 1.5;
-    font-style: normal;
 }
 
-/* --- Estilos de la Columna del Mapa (Derecha) --- */
+/* --- BLOQUE DE MAPA BLANCO EDITORIAL (Móvil) --- */
 .contact-map-side {
     width: 100%;
 }
 
-/* Contenedor Premium del Iframe */
-.contact-map-container {
-    width: 100%;
-    height: 380px; /* Altura ideal y equilibrada en dispositivos móviles */
-    border-radius: 8px;
+.contact-map-card {
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(11, 25, 44, 0.06);
     overflow: hidden;
-    box-shadow: 0 12px 35px rgba(11, 25, 44, 0.06);
-    border: 1px solid rgba(11, 25, 44, 0.08);
-    background-color: var(--bg-light); /* Evita destellos blancos durante la carga */
+    position: relative;
+    border: 1px solid rgba(11, 25, 44, 0.05);
+    transition: transform 0.4s var(--transition-smooth), 
+                box-shadow 0.4s var(--transition-smooth);
+}
+
+.map-badge {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background-color: rgba(212, 175, 55, 0.12);
+    color: var(--accent-gold-hover);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 0.35rem 0.85rem;
+    border-radius: 50px;
+    letter-spacing: 1px;
+    z-index: 10;
+}
+
+.map-card-header {
+    padding: 2rem;
+    background-color: #FFFFFF;
+}
+
+.map-card-title {
+    font-family: var(--font-title);
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--primary-navy);
+    margin-bottom: 0.5rem;
+}
+
+.map-card-address {
+    font-family: var(--font-body);
+    font-style: normal;
+    font-size: 0.875rem;
+    color: #5A6A80;
+    line-height: 1.5;
+}
+
+.map-iframe-wrapper {
+    width: 100%;
+    height: 380px;
+    background-color: var(--bg-light);
+    display: block;
 }
 
 .contact-iframe-map {
@@ -1380,28 +1341,22 @@ body {
     display: block;
 }
 
-/* ==========================================================================
-   MEDIAS QUERIES ACTUALIZADAS PARA CONTACTO (Escritorio)
-   ========================================================================== */
-@media (min-width: 992px) {
-    .contact {
-        padding: 7.5rem 0;
-    }
+.contact-map-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 45px rgba(11, 25, 44, 0.12);
+}
 
+/* --- REFUERZO DE DOS COLUMNAS ABSOLUTAS (Escritorio) --- */
+@media (min-width: 992px) {
     .contact-container {
-        flex-direction: row; /* Posicionamiento lado a lado en pantallas grandes */
-        justify-content: space-between;
-        align-items: flex-start;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* Divide la sección equitativamente */
+        gap: 4rem;
+        align-items: start;
     }
 
     .contact-content-side {
-        flex: 0 0 48%; /* Ancho controlado de la columna de textos */
-    }
-
-    .contact-map-side {
-        flex: 0 0 46%; /* Ancho controlado para el mapa */
-        position: sticky;
-        top: 110px; /* Se mantiene estático si el contenido de la izquierda es largo */
+        padding-right: 1rem;
     }
 
     .contact-title {
@@ -1413,7 +1368,11 @@ body {
         font-size: 1.05rem;
     }
 
-    .contact-map-container {
-        height: 450px; /* Mayor presencia visual en monitores de escritorio */
+    .map-card-header {
+        padding: 2.5rem;
+    }
+
+    .map-iframe-wrapper {
+        height: 440px; /* Equilibrio perfecto de alturas */
     }
 }
