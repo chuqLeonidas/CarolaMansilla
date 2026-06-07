@@ -1177,24 +1177,23 @@ body {
         padding: 0 2rem 1.75rem 2rem;
     }
 }
-
 /* ==========================================================================
-   14. ESTILOS DE LA SECCIÓN CONTACTO (Mobile First)
+   14. ESTILOS REVISADOS DE LA SECCIÓN CONTACTO (Mobile First)
    ========================================================================== */
 .contact {
     padding: 5rem 0;
-    background-color: #FFFFFF; /* Fondo blanco para limpieza visual absoluta */
+    background-color: #FFFFFF; /* Fondo limpio para contrastar con el gris de las FAQ */
     color: var(--primary-navy);
 }
 
 .contact-container {
     display: flex;
-    flex-direction: column; /* Apilado vertical para dispositivos móviles */
-    gap: 3.5rem;
+    flex-direction: column; /* Apilado en una columna por defecto para móviles */
+    gap: 3rem;
 }
 
-/* --- Columna de Información --- */
-.contact-info {
+/* --- Estilos de la Columna de Contenido (Izquierda) --- */
+.contact-content-side {
     display: flex;
     flex-direction: column;
 }
@@ -1223,14 +1222,97 @@ body {
     font-size: 0.95rem;
     color: #4A5568;
     line-height: 1.6;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
 }
 
-/* Lista de ítems de detalles */
+/* Nueva Tarjeta de WhatsApp Compacta e Integrada */
+.contact-premium-card {
+    background-color: var(--primary-navy);
+    color: var(--text-white);
+    padding: 2.25rem 1.75rem;
+    border-radius: 6px;
+    box-shadow: 0 12px 30px rgba(11, 25, 44, 0.1);
+    position: relative;
+    margin-bottom: 2.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-badge-gold {
+    position: absolute;
+    top: -12px;
+    left: 1.75rem;
+    background-color: var(--accent-gold);
+    color: var(--primary-navy);
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 0.25rem 1rem;
+    border-radius: 50px;
+    letter-spacing: 1px;
+}
+
+.card-card-flex {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+.whatsapp-icon-wrapper {
+    width: 48px;
+    height: 48px;
+    color: var(--accent-gold);
+    background-color: rgba(212, 175, 55, 0.12);
+    border-radius: 50%;
+    padding: 0.85rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.whatsapp-icon-wrapper svg {
+    width: 100%;
+    height: 100%;
+}
+
+.card-action-title {
+    font-family: var(--font-title);
+    font-size: 1.35rem;
+    font-weight: 400;
+    color: var(--text-white);
+}
+
+.contact-phone-display {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--accent-gold);
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 0.15rem;
+}
+
+.btn-contact-cta {
+    width: 100%;
+    margin-bottom: 0.875rem;
+}
+
+.card-action-note {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.45);
+    text-align: center;
+}
+
+/* Lista de ítems inferiores (Modalidad y Dirección) */
 .contact-details-list {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1.75rem;
 }
 
 .contact-detail-item {
@@ -1239,10 +1321,9 @@ body {
     align-items: flex-start;
 }
 
-/* Caja contenedora de iconos sutiles */
 .detail-icon-box {
-    width: 44px;
-    height: 44px;
+    width: 42px;
+    height: 42px;
     background-color: var(--bg-light);
     color: var(--primary-navy);
     padding: 0.75rem;
@@ -1261,123 +1342,46 @@ body {
 
 .detail-text-box h3 {
     font-family: var(--font-body);
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 600;
-    margin-bottom: 0.35rem;
+    margin-bottom: 0.25rem;
     color: var(--primary-navy);
 }
 
 .detail-text-box p,
 .detail-text-box address {
     font-family: var(--font-body);
-    font-size: 0.9rem;
+    font-size: 0.875rem;
     color: #5A6A80;
     line-height: 1.5;
     font-style: normal;
 }
 
-/* --- Columna de Tarjeta de Acción Premium --- */
-.contact-action-panel {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.contact-premium-card {
-    background-color: var(--primary-navy);
-    color: var(--text-white);
+/* --- Estilos de la Columna del Mapa (Derecha) --- */
+.contact-map-side {
     width: 100%;
-    max-width: 440px; /* Tamaño controlado para no deformarse */
-    padding: 3rem 2rem 2.5rem 2rem;
+}
+
+/* Contenedor Premium del Iframe */
+.contact-map-container {
+    width: 100%;
+    height: 380px; /* Altura ideal y equilibrada en dispositivos móviles */
     border-radius: 8px;
-    box-shadow: 0 20px 40px rgba(11, 25, 44, 0.15);
-    text-align: center;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    overflow: hidden;
+    box-shadow: 0 12px 35px rgba(11, 25, 44, 0.06);
+    border: 1px solid rgba(11, 25, 44, 0.08);
+    background-color: var(--bg-light); /* Evita destellos blancos durante la carga */
 }
 
-/* Etiqueta flotante dorada sobre la tarjeta */
-.card-badge-gold {
-    position: absolute;
-    top: -12px;
-    background-color: var(--accent-gold);
-    color: var(--primary-navy);
-    font-family: var(--font-body);
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    padding: 0.35rem 1.25rem;
-    border-radius: 50px;
-    letter-spacing: 1px;
-    box-shadow: 0 4px 10px rgba(212, 175, 55, 0.25);
-}
-
-/* Icono central de WhatsApp estilizado */
-.whatsapp-icon-wrapper {
-    width: 64px;
-    height: 64px;
-    color: var(--accent-gold);
-    background-color: rgba(212, 175, 55, 0.1);
-    border-radius: 50%;
-    padding: 1.15rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1.5rem;
-}
-
-.whatsapp-icon-wrapper svg {
+.contact-iframe-map {
     width: 100%;
     height: 100%;
-}
-
-.card-action-title {
-    font-family: var(--font-title);
-    font-size: 1.75rem;
-    font-weight: 400;
-    margin-bottom: 0.75rem;
-}
-
-.card-action-description {
-    font-family: var(--font-body);
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-}
-
-/* Enlace/Texto del teléfono */
-.contact-phone-display {
-    font-family: var(--font-body);
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--accent-gold);
-    text-decoration: none;
-    margin-bottom: 1.75rem;
-    transition: color 0.3s ease;
-    display: inline-block;
-}
-
-.contact-phone-display:hover {
-    color: var(--text-white);
-}
-
-/* Botón adaptado internamente */
-.btn-contact-cta {
-    width: 100%;
-    margin-bottom: 1rem;
-}
-
-.card-action-note {
-    font-family: var(--font-body);
-    font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.5);
+    border: 0;
+    display: block;
 }
 
 /* ==========================================================================
-   15. RESPONSIVE DESIGN FOR CONTACT (Media Queries)
+   MEDIAS QUERIES ACTUALIZADAS PARA CONTACTO (Escritorio)
    ========================================================================== */
 @media (min-width: 992px) {
     .contact {
@@ -1385,18 +1389,19 @@ body {
     }
 
     .contact-container {
-        flex-direction: row; /* Dos columnas perfectas en pantallas de escritorio */
-        align-items: center;
+        flex-direction: row; /* Posicionamiento lado a lado en pantallas grandes */
         justify-content: space-between;
+        align-items: flex-start;
     }
 
-    .contact-info {
-        flex: 0 0 50%; /* Ocupa la mitad izquierda */
+    .contact-content-side {
+        flex: 0 0 48%; /* Ancho controlado de la columna de textos */
     }
 
-    .contact-action-panel {
-        flex: 0 0 42%; /* Ocupa la columna derecha con un aire de separación */
-        justify-content: flex-end;
+    .contact-map-side {
+        flex: 0 0 46%; /* Ancho controlado para el mapa */
+        position: sticky;
+        top: 110px; /* Se mantiene estático si el contenido de la izquierda es largo */
     }
 
     .contact-title {
@@ -1408,7 +1413,7 @@ body {
         font-size: 1.05rem;
     }
 
-    .contact-premium-card {
-        padding: 3.5rem 2.5rem 3rem 2.5rem; /* Más aire premium en escritorio */
+    .contact-map-container {
+        height: 450px; /* Mayor presencia visual en monitores de escritorio */
     }
 }
