@@ -754,3 +754,247 @@ body {
         padding: 2.5rem 1.75rem;
     }
 }
+
+/* ==========================================================================
+   9. ESTILOS DE LA SECCIÓN SESIONES (Mobile First)
+   ========================================================================== */
+.sessions {
+    padding: 5rem 0;
+    background-color: #FFFFFF; /* Fondo blanco para generar limpieza y contraste */
+    color: var(--primary-navy);
+}
+
+/* Cabecera de la sección */
+.sessions-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 3.5rem auto;
+}
+
+.sessions-tagline {
+    font-family: var(--font-body);
+    color: var(--accent-gold);
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    display: inline-block;
+    margin-bottom: 0.75rem;
+}
+
+.sessions-title {
+    font-family: var(--font-title);
+    font-size: 2rem;
+    line-height: 1.3;
+    font-weight: 500;
+    margin-bottom: 1.25rem;
+}
+
+.sessions-subtitle {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: #4A5568;
+    line-height: 1.6;
+}
+
+/* Grilla (Móvil: vertical) */
+.sessions-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    margin-bottom: 4rem;
+}
+
+/* Estilo Base de las Tarjetas */
+.session-card {
+    background-color: var(--bg-light);
+    padding: 2.5rem 2rem;
+    border-radius: 8px;
+    box-shadow: 0 10px 35px rgba(11, 25, 44, 0.03);
+    border: 1px solid rgba(11, 25, 44, 0.05);
+    transition: all 0.4s var(--transition-smooth);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Detalle sutil extra para diferenciar la tarjeta presencial */
+.session-card.highlight-border {
+    border-left: 4px solid var(--accent-gold);
+}
+
+.session-card-header {
+    margin-bottom: 1.25rem;
+}
+
+.session-type {
+    font-family: var(--font-body);
+    color: var(--accent-gold-hover);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.session-card-title {
+    font-family: var(--font-title);
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--primary-navy);
+    margin-top: 0.25rem;
+}
+
+.session-card-description {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: #5A6A80;
+    line-height: 1.6;
+    margin-bottom: 1.75rem;
+}
+
+/* Bloque informativo de Dirección Física */
+.session-location {
+    display: flex;
+    gap: 0.875rem;
+    background-color: #FFFFFF;
+    padding: 1rem 1.25rem;
+    border-radius: 6px;
+    margin-bottom: 1.75rem;
+    border: 1px dashed rgba(212, 175, 55, 0.4);
+}
+
+.icon-pin {
+    width: 20px;
+    height: 20px;
+    color: var(--accent-gold);
+    flex-shrink: 0;
+    margin-top: 0.2rem;
+}
+
+.location-text {
+    font-family: var(--font-body);
+    font-style: normal;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: #4A5568;
+}
+
+/* Listado de Características con Checkmarks */
+.session-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+    margin-top: auto; /* Empuja la lista al fondo si hay desniveles */
+}
+
+.session-features li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--primary-navy);
+}
+
+.icon-check {
+    width: 16px;
+    height: 16px;
+    color: var(--accent-gold);
+    flex-shrink: 0;
+}
+
+/* Efectos Hover Elegantes */
+.session-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 40px rgba(11, 25, 44, 0.07);
+    background-color: #FFFFFF; /* Se aclara sutilmente si estaba en gris */
+}
+
+/* ==========================================================================
+   10. BLOQUE DESTACADO INFERIOR (Caja de Conversión Premium)
+   ========================================================================== */
+.sessions-footer-block {
+    background-color: var(--primary-navy);
+    color: var(--text-white);
+    padding: 2.5rem 2rem;
+    border-radius: 8px;
+    box-shadow: 0 15px 35px rgba(11, 25, 44, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.footer-block-title {
+    font-family: var(--font-title);
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--accent-gold);
+    margin-bottom: 0.75rem;
+}
+
+.footer-block-text {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    max-width: 650px;
+}
+
+.footer-block-action {
+    width: 100%;
+}
+
+.footer-block-action .btn {
+    width: 100%; /* Botón completo en pantallas móviles */
+}
+
+/* ==========================================================================
+   11. RESPONSIVE DESIGN FOR SESSIONS (Media Queries)
+   ========================================================================== */
+
+@media (min-width: 768px) {
+    .sessions-footer-block {
+        padding: 3.5rem;
+        flex-direction: row; /* Alineación horizontal en tabletas/PC */
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .footer-block-content {
+        flex: 0 0 65%;
+    }
+
+    .footer-block-action {
+        width: auto;
+    }
+
+    .footer-block-action .btn {
+        width: auto;
+    }
+}
+
+@media (min-width: 992px) {
+    .sessions {
+        padding: 7.5rem 0;
+    }
+
+    .sessions-title {
+        font-size: 2.75rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .sessions-subtitle {
+        font-size: 1.05rem;
+    }
+
+    .sessions-grid {
+        flex-direction: row; /* Dos columnas paralelas en escritorio */
+        gap: 2rem;
+    }
+
+    .session-card {
+        flex: 1; /* Distribución perfectamente equitativa */
+        padding: 3.5rem 2.5rem;
+    }
+}
