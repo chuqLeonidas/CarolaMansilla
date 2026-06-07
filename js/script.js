@@ -31,3 +31,46 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+// ==========================================================================
+// LÓGICA DE CONTROL PARA EL ACORDEÓN DE PREGUNTAS FRECUENTES (FAQ)
+// ==========================================================================
+
+document.addEventListener('DOMContentLoaded', () => {
+    const faqTriggers = document.querySelectorAll('.faq-trigger');
+
+    faqTriggers.forEach(trigger => {
+        trigger.addEventListener('click', function() {
+            const currentItem = this.parentElement;
+            const currentContent = this.nextElementSibling;
+            const isOpen = currentItem.classList.contains('is-open');
+
+            // [OPCIONAL] Cerrar todos los demás elementos abiertos (Efecto acordeón estricto)
+            document.querySelectorAll('.faq-item').forEach(item => {
+                if (item !== currentItem && item.classList.contains('is-open')) {
+                    item.classList.remove('is-open');
+                    item.querySelector('.faq-trigger').setAttribute('aria-expanded', 'false');
+                    
+                    const content = item.querySelector('.faq-content');
+                    content.style.maxHeight = null;
+                    content.setAttribute('aria-hidden', 'true');
+                }
+            });
+
+            // Alternar estado del elemento actual
+            if (isOpen) {
+                currentItem.classList.remove('is-open');
+                this.setAttribute('aria-expanded', 'false');
+                currentContent.style.maxHeight = null;
+                currentContent.setAttribute('aria-hidden', 'true');
+            } else {
+                currentItem.classList.add('is-open');
+                this.setAttribute('aria-expanded', 'true');
+                
+                // Cálculo dinámico de la altura total del contenido interno (con padding incluido)
+                currentContent.style.maxHeight = currentContent.scrollHeight + "px";
+                currentContent.setAttribute('aria-hidden', 'false');
+            }
+        });
+    });
+});
