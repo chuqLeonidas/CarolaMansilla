@@ -589,3 +589,168 @@ body {
         padding: 1.25rem 2rem;
     }
 }
+
+/* ==========================================================================
+   7. ESTILOS DE LA SECCIÓN METODOLOGÍA (Mobile First)
+   ========================================================================== */
+.methodology {
+    padding: 5rem 0;
+    background-color: var(--bg-light); /* Fondo gris claro de cortesía */
+    color: var(--primary-navy);
+}
+
+/* Cabecera de la sección */
+.methodology-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 3.5rem auto; /* Centrado horizontal y margen inferior amplio */
+}
+
+.methodology-tagline {
+    font-family: var(--font-body);
+    color: var(--accent-gold);
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    display: inline-block;
+    margin-bottom: 0.75rem;
+}
+
+.methodology-title {
+    font-family: var(--font-title);
+    font-size: 2rem;
+    line-height: 1.3;
+    font-weight: 500;
+    margin-bottom: 1.25rem;
+}
+
+.methodology-subtitle {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: #4A5568;
+    line-height: 1.6;
+}
+
+/* Grilla de Tarjetas (Por defecto en móvil: una sola columna) */
+.methodology-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+/* Diseño de Tarjeta Individual Premium */
+.methodology-card {
+    background-color: #FFFFFF;
+    padding: 2.25rem 2rem;
+    border-radius: 6px;
+    box-shadow: 0 10px 30px rgba(11, 25, 44, 0.04); /* Sombra ultra suave */
+    border-top: 3px solid transparent; /* Reservado para el efecto Hover */
+    transition: all 0.4s var(--transition-smooth);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Encabezado interno de la tarjeta */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+/* Contenedor del Icono SVG */
+.card-icon {
+    width: 46px;
+    height: 46px;
+    color: var(--accent-gold);
+    background-color: rgba(212, 175, 55, 0.08); /* Sutil fondo áureo */
+    padding: 0.65rem;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+/* Control estricto de dimensiones del SVG */
+.card-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* Número de la etapa de fondo refinado */
+.card-number {
+    font-family: var(--font-title);
+    font-size: 1.25rem;
+    color: rgba(11, 25, 44, 0.15); /* Transparente y elegante */
+    font-weight: 700;
+}
+
+.card-title {
+    font-family: var(--font-title);
+    font-size: 1.35rem;
+    font-weight: 500;
+    margin-bottom: 0.875rem;
+    transition: color 0.3s ease;
+}
+
+.card-description {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: #5A6A80;
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+/* Efectos Interactivos Hover (Para ratón o pulsación prolongada) */
+.methodology-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 35px rgba(11, 25, 44, 0.08);
+    border-top-color: var(--accent-gold); /* Revela una fina línea dorada premium */
+}
+
+.methodology-card:hover .card-icon {
+    background-color: var(--accent-gold);
+    color: var(--primary-navy); /* Invierte los colores del icono */
+}
+
+.methodology-card:hover .card-title {
+    color: var(--accent-gold-hover);
+}
+
+/* ==========================================================================
+   8. RESPONSIVE DESIGN FOR METHODOLOGY (Media Queries)
+   ========================================================================== */
+
+/* Ajuste para Tablets (2 columnas) */
+@media (min-width: 640px) {
+    .methodology-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Ajuste para Escritorio (4 columnas perfectas horizontales) */
+@media (min-width: 1024px) {
+    .methodology {
+        padding: 7.5rem 0;
+    }
+
+    .methodology-title {
+        font-size: 2.75rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .methodology-subtitle {
+        font-size: 1.05rem;
+    }
+
+    .methodology-grid {
+        grid-template-columns: repeat(4, 1fr); /* Divide la fila equitativamente */
+        gap: 1.5rem; /* Ajuste estrecho para encajar armónicamente en los 1200px */
+    }
+    
+    .methodology-card {
+        padding: 2.5rem 1.75rem;
+    }
+}
