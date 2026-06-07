@@ -1376,3 +1376,188 @@ body {
         height: 440px; /* Equilibrio perfecto de alturas */
     }
 }
+
+/* ==========================================================================
+   15. ESTILOS DE LA SECCIÓN FOOTER (Mobile First)
+   ========================================================================== */
+.main-footer {
+    background-color: var(--primary-navy);
+    color: var(--text-white);
+    padding: 4.5rem 0 2rem 0; /* Espaciado amplio premium */
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-grid {
+    display: flex;
+    flex-direction: column; /* Apilado vertical para móviles */
+    gap: 3rem;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Estilos Columna 1: Brand --- */
+.footer-logo {
+    font-family: var(--font-title);
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--text-white);
+    margin-bottom: 0.25rem;
+    letter-spacing: 0.5px;
+}
+
+.footer-tagline {
+    font-family: var(--font-body);
+    color: var(--accent-gold);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    margin-bottom: 1.25rem;
+    display: inline-block;
+}
+
+.footer-bio {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    max-width: 340px; /* Control de desborde de lectura */
+}
+
+/* --- Títulos de Columnas 2 y 3 --- */
+.footer-column-title {
+    font-family: var(--font-title);
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--text-white);
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+/* --- Estilos Columna 2: Navegación --- */
+.footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.footer-link {
+    font-family: var(--font-body);
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.footer-link:hover {
+    color: var(--accent-gold);
+    transform: translateX(4px); /* Sutil desplazamiento dinámico */
+}
+
+/* --- Estilos Columna 3: Redes Sociales --- */
+.social-icons-wrapper {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.social-icon-link {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--text-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.35s var(--transition-smooth);
+    text-decoration: none;
+}
+
+.social-icon-link svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* Efecto hover sofisticado para iconos */
+.social-icon-link:hover {
+    background-color: var(--accent-gold);
+    border-color: var(--accent-gold);
+    color: var(--primary-navy); /* Invierte el color del SVG interno */
+    transform: translateY(-4px); /* Elevación sutil */
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.25);
+}
+
+/* --- Línea Separadora --- */
+.footer-separator {
+    border: none;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.08);
+    margin: 3.5rem 0 1.75rem 0;
+}
+
+/* --- Parte Inferior del Footer --- */
+.footer-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: center;
+}
+
+.copyright {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.footer-note {
+    font-family: var(--font-body);
+    font-size: 0.775rem;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+/* ==========================================================================
+   MEDIA QUERIES - RESPONSIVE PARA EL FOOTER
+   ========================================================================== */
+
+/* Ajustes intermedios para Tablets */
+@media (min-width: 640px) {
+    .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* Dos columnas en tablets */
+        gap: 3rem;
+    }
+    
+    .footer-column.footer-brand {
+        grid-column: span 2; /* El branding ocupa el ancho superior completo en tablets */
+    }
+}
+
+/* Ajustes finales para Escritorio */
+@media (min-width: 992px) {
+    .main-footer {
+        padding: 5.5rem 0 2.5rem 0;
+    }
+
+    .footer-grid {
+        grid-template-columns: 2fr 1fr 1fr; /* Distribución asimétrica premium */
+        gap: 2rem;
+        align-items: start;
+    }
+
+    .footer-column.footer-brand {
+        grid-column: span 1; /* Retoma su espacio natural en la primera columna */
+    }
+
+    .footer-bottom {
+        flex-direction: row; /* Alineación horizontal de créditos */
+        justify-content: space-between;
+        text-align: left;
+    }
+}
