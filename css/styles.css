@@ -507,20 +507,21 @@ body {
 }
 
 /* ==========================================================================
-   4. SECCIÓN SOBRE CAROLA
-   ========================================================================== */
+   4. ESTILOS DE LA SECCIÓN SOBRE CAROLA (Premium Layered Design)
+   ========================================================================= */
 .about {
-    padding: 5rem 0;
-    background-color: #FFFFFF; /* Alternancia rítmica */
-    color: var(--primary-navy);
+    padding: 7.5rem 0;
+    background-color: #FFFFFF; /* Fondo blanco impecable */
+    color: #4A5568; /* Gris para el cuerpo del texto para legibilidad */
 }
 
 .about-container {
     display: flex;
-    flex-direction: column;
-    gap: 3.5rem;
+    flex-direction: column; /* Apilado vertical para móviles por defecto */
+    gap: 5rem;
 }
 
+/* --- Columna de Texto --- */
 .about-content {
     display: flex;
     flex-direction: column;
@@ -528,7 +529,7 @@ body {
 }
 
 .about-subtitle {
-    font-family: var(--font-body);
+    font-family: var(--font-body); /* Montserrat asumida */
     color: var(--accent-gold);
     text-transform: uppercase;
     font-weight: 600;
@@ -538,81 +539,189 @@ body {
 }
 
 .about-title {
-    font-family: var(--font-title);
-    font-size: 2rem;
+    font-family: var(--font-title); /* Playfair Display asumida */
+    font-size: 2.75rem;
     line-height: 1.3;
     font-weight: 500;
-    margin-bottom: 1.5rem;
+    color: var(--primary-navy);
+    margin-bottom: 2rem;
 }
 
-.about-text {
+.about-quote {
     font-family: var(--font-body);
-    font-size: 0.95rem;
-    color: #4A5568;
-    margin-bottom: 1.25rem;
-}
-
-.about-text-highlight {
     font-size: 1.1rem;
     font-weight: 500;
     line-height: 1.6;
     color: var(--primary-navy);
     border-left: 3px solid var(--accent-gold);
-    padding-left: 1.25rem;
-    margin-bottom: 1.75rem;
+    padding-left: 1.5rem;
+    margin: 1.5rem 0 2.5rem 0;
 }
 
+.about-paragraph {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: #5A6A80;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.about-signature {
+    font-family: var(--font-signature); /* Asumida o usar font-style: italic con color dorado */
+    color: var(--accent-gold);
+    font-size: 1.3rem;
+    margin-top: 1.5rem;
+}
+
+/* --- Columna de Foto (Decoración Compleja en Capas) --- */
 .about-media {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.about-image-wrapper {
-    position: relative;
+.about-media-wrapper {
+    position: relative; /* Clave para el posicionamiento absoluto de las capas decorativas */
     width: 100%;
-    max-width: 380px;
-    aspect-ratio: 4 / 5;
+    max-width: 480px; /* Ancho máximo controlado para la foto */
+}
+
+/* Marco de la Foto en Arco */
+.photo-frame {
+    position: relative;
+    width: 80%; /* Deja espacio para las decoraciones que asoman */
+    aspect-ratio: 1 / 1.15; /* Proporción similar a la imagen */
+    border-radius: 200px 200px 0 0; /* Forma de arco superior */
+    border: 2px solid var(--accent-gold); /* Borde dorado fino */
+    overflow: hidden; /* Recorta la fotografía a la forma */
+    z-index: 5;
+    box-shadow: 0 15px 35px rgba(11, 25, 44, 0.08); /* Sombra suave para profundidad */
 }
 
 .about-img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    border-radius: 4px;
-    box-shadow: 0 15px 35px rgba(11, 25, 44, 0.08);
+    object-fit: cover; /* Ajuste perfecto de la foto */
 }
 
-.about-badge {
+/* --- Decoraciones de Fondo (Absolutas) --- */
+
+/* Patrón de Puntos */
+.decorator-dots {
     position: absolute;
-    bottom: -15px;
-    right: -10px;
+    top: -30px;
+    right: -20px;
+    width: 100px;
+    height: 100px;
+    background-image: radial-gradient(var(--accent-gold) 1.5px, transparent 1.5px);
+    background-size: 10px 10px;
+    z-index: 1;
+}
+
+/* Rama de Hojas Grande */
+.decorator-branch-large {
+    position: absolute;
+    bottom: -30px;
+    right: -20px;
+    width: 120px;
+    height: 180px;
+    background-image: url('assets/images/leaf-pattern.svg'); /* Usar una imagen o SVG */
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+/* --- Decoraciones Superpuestas (Absolutas) --- */
+
+/* Círculo Azul con Hoja */
+.decorator-leaf-circle {
+    position: absolute;
+    top: 50px;
+    left: -40px;
+    width: 80px;
+    height: 80px;
     background-color: var(--primary-navy);
-    color: var(--text-white);
-    padding: 1rem 1.5rem;
-    border-radius: 4px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem;
+    z-index: 10;
     box-shadow: 0 10px 25px rgba(11, 25, 44, 0.15);
+}
+
+.leaf-icon {
+    width: 100%;
+    height: 100%;
+    fill: var(--accent-gold); /* Relleno dorado de la hoja */
+}
+
+/* Insignia de Formación */
+.formation-badge {
+    position: absolute;
+    bottom: -20px;
+    right: -30px;
+    background-color: var(--primary-navy);
+    padding: 1.5rem 2rem;
+    border-radius: 6px;
+    display: flex;
+    gap: 1.25rem;
+    align-items: center;
+    z-index: 15;
+    box-shadow: 0 15px 35px rgba(11, 25, 44, 0.2);
+    width: 300px; /* Ancho fijo para la insignia */
+}
+
+.badge-icon-box {
+    width: 40px;
+    height: 40px;
+    color: var(--accent-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cap-icon {
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 3px;
+}
+
+.badge-text-box {
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
-    z-index: 10;
 }
 
-.badge-tag {
+.badge-tagline {
     font-family: var(--font-body);
-    font-size: 0.7rem;
-    text-transform: uppercase;
+    font-size: 0.75rem;
     color: var(--accent-gold);
     font-weight: 600;
     letter-spacing: 1.5px;
+    margin-bottom: 0.25rem;
 }
 
 .badge-title {
     font-family: var(--font-title);
-    font-size: 1.15rem;
+    font-size: 1.35rem;
     font-weight: 400;
-    white-space: nowrap;
+    color: #FFFFFF; /* Texto blanco en la insignia */
 }
+
+.badge-border-partial {
+    position: absolute;
+    bottom: 0;
+    left: 2rem;
+    width: 40%;
+    height: 3px;
+    background-color: var(--accent-gold);
+}
+
+/* ==========================================================================
+   Ajustes Responsivos para Sobre Carola
+   ========================================================================= */
 
 @media (min-width: 992px) {
     .about {
@@ -620,18 +729,18 @@ body {
     }
 
     .about-container {
-        flex-direction: row; /* Imagen a un lado y texto al otro */
+        flex-direction: row; /* Diseño de dos columnas paralelo en escritorio */
         align-items: center;
         justify-content: space-between;
     }
 
     .about-content {
-        flex: 0 0 52%;
+        flex: 0 0 52%; /* Equilibrio de anchos */
     }
 
     .about-media {
         flex: 0 0 40%;
-        justify-content: flex-start;
+        justify-content: flex-start; /* Alineación limpia con la grilla */
     }
 
     .about-title {
@@ -645,16 +754,9 @@ body {
     }
 
     .about-image-wrapper {
-        max-width: 420px;
-    }
-    
-    .about-badge {
-        bottom: -20px;
-        right: -25px;
-        padding: 1.25rem 2rem;
+        max-width: 480px; /* Escalado proporcional para monitores */
     }
 }
-
 
 /* ==========================================================================
    5. SECCIÓN METODOLOGÍA
